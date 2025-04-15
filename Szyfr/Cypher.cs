@@ -10,14 +10,17 @@ namespace Szyfr
     {
         public static string CaesarsCypher(string text)
         {
+            // Usuniencie ze stringa spacji i zmienienie wszystkich liter na wielkie
             text = text.ToUpper().Replace(" ", "");
             char[] letters = text.ToCharArray();
             string output = String.Empty;
+            // Zmiana kazdego znaku w stringu na wartosc i przesuniecie o 3 znaki do przodu
             foreach (char c in text)
             {
                 int charValue = (int)c;
 
                 charValue += 3;
+                // overflow poza alfabet odejmuje 26 aby znowu zapetlic litery
                 if (charValue > 90)
                 {
                     charValue -= 26;
@@ -29,6 +32,8 @@ namespace Szyfr
         }
         public static string DictionaryCypher(string text)
         {
+            //Zmiana liter poprzez "slownik" w parach kazda przesunieta o 3 do przodu
+            //Dodanie par liter z przesunienciem o 3 litery
             Dictionary<char, char> dict = new Dictionary<char, char>();
             dict.Add('A', 'D');
             dict.Add('B', 'E');
@@ -56,9 +61,11 @@ namespace Szyfr
             dict.Add('X', 'A');
             dict.Add('Y', 'B');
             dict.Add('Z', 'C');
+            // zmiana liter na wielkie i usuniecie spacji
             text = text.ToUpper().Replace(" ", "");
             char[] letters = text.ToCharArray();
             string output = String.Empty;
+            //dodanie do outputa kazdego znaku z strina po przerzuceniu go przez slownik
             foreach (char c in text)
             {
                 output += dict[c];
@@ -66,7 +73,9 @@ namespace Szyfr
             return output;
         }
         public static string GADERYPOLUKICypher(string text)
+            //slownik z parami liter zgodnymi z szyfrem harcerskim GADERYPOLUKI
         {
+            //dodanie par liter
             Dictionary<char, char> dict = new Dictionary<char, char>();
             dict.Add('A', 'G');
             dict.Add('B', 'B');
@@ -94,9 +103,11 @@ namespace Szyfr
             dict.Add('X', 'X');
             dict.Add('Y', 'R');
             dict.Add('Z', 'Z');
+            //zmiana liter na wielkie, usuniecie spacji
             text = text.ToUpper().Replace(" ", "");
             char[] letters = text.ToCharArray();
             string output = String.Empty;
+            //dodanie do outputa kazdego znaku po przerzuceniu przez slownik
             foreach (char c in text)
             {
                 output += dict[c];
