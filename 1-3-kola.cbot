@@ -1,0 +1,41 @@
+extern void object::Nowy()
+{
+	object battery;
+	object center;
+	object titan;
+	object fact;
+	object track;
+	battery = radar(PowerCell);
+	goto(battery.position);
+	grab();
+	center = radar(ResearchCenter);
+	goto(center.position);
+	drop();
+	research(TrackedGrabber,center);
+	titan = radar(Titanium);
+	goto(titan.position);
+	turn(-30);
+	grab();
+	fact = radar(BotFactory);
+	goto(fact.position);
+	drop();
+	move(-5);
+	wait(25);
+	factory(TrackedGrabber, "program/1-3-gasienica.cbot", fact);
+	wait(25);
+	battery = radar(PowerCell);
+	goto(battery.position);
+	grab();
+	bool robotmade = detect(TrackedGrabber);
+	
+	track = radar(TrackedGrabber);
+	goto(track.position);
+	drop();
+	move(-5);
+	turn(90);
+	move(15);
+	
+	
+	
+	
+}

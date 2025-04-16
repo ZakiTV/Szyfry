@@ -1,0 +1,13 @@
+extern void object::Nowy()
+{
+	object blackbox;
+	
+	blackbox = radar(BlackBox);
+	goto(blackbox.position);
+	grab();
+	object ship = radar(SpaceShip);
+	goto(ship.position);
+	drop();
+	
+	
+}
